@@ -2,6 +2,7 @@
   "name": "com.gpm.novadigital",
   "version": "1.0.0",
   "main": "app.js",
+  "license": "MIT",
   "scripts": {},
   "dependencies": {
     "homey-zigbeedriver": "^2.2.17",
