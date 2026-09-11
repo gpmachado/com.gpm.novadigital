@@ -13,8 +13,26 @@
     "meter_power",
     "measure_current",
     "measure_voltage",
-    "is_availability"
+    "is_availability",
+    "button.reset_meter"
   ],
+  "capabilitiesOptions": {
+    "button.reset_meter": {
+      "maintenanceAction": true,
+      "title": {
+        "en": "Reset energy meter",
+        "de": "Energiezähler zurücksetzen",
+        "es": "Restablecer contador de energía",
+        "it": "Azzera contatore energia"
+      },
+      "desc": {
+        "en": "Zeroes the energy total shown by Homey. The device's own lifetime counter is not affected (this firmware doesn't support a hardware reset) — Homey remembers the current value and subtracts it from future readings.",
+        "de": "Setzt den in Homey angezeigten Energiezähler auf null. Der interne Zähler des Geräts bleibt unverändert (diese Firmware unterstützt keinen Hardware-Reset) — Homey merkt sich den aktuellen Wert und zieht ihn von künftigen Messwerten ab.",
+        "es": "Pone a cero el total de energía mostrado por Homey. El contador interno del dispositivo no se modifica (este firmware no admite reinicio por hardware) — Homey recuerda el valor actual y lo resta de las lecturas futuras.",
+        "it": "Azzera il totale energia mostrato da Homey. Il contatore interno del dispositivo non viene modificato (questo firmware non supporta il reset hardware) — Homey memorizza il valore attuale e lo sottrae dalle letture future."
+      }
+    }
+  },
   "energy": {
     "meterPowerImportedCapability": "meter_power"
   },

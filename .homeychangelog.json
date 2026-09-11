@@ -1,4 +1,7 @@
 {
+  "1.1.0": {
+    "en": "Fixed: power-on behavior, indicator LED, child lock and backlight settings were not being read or applied on Tuya smart plugs and switches. Added: a 'Reset energy meter' button on smart plugs to zero the energy total shown by Homey."
+  },
   "1.0.0": {
     "en": "First version!"
   }
