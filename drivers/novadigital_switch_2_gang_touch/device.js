@@ -8,6 +8,7 @@ const {
   SWITCH_DISPLAY,
   SWITCH_NORMALIZE,
 } = require('../../lib/TuyaZclBase');
+const { writeAttributesVerbose } = require('../../lib/zclDebug');
 
 class novadigital_switch_2gang extends TuyaZclBase {
 
@@ -170,8 +171,7 @@ class novadigital_switch_2gang extends TuyaZclBase {
 
         case 'switch_mode_global': {
           const label = SWITCH_DISPLAY[value] || value;
-          await this.zclNode.endpoints[1].clusters.tuyaPowerOnState
-            .writeAttributes({ switchMode: value })
+          await writeAttributesVerbose(this, this.zclNode.endpoints[1].clusters.tuyaPowerOnState, { switchMode: value })
             .catch(err => this.error('Write switchMode:', err));
           setImmediate(() => {
             this._propagateSwitchModeLabel(label);
