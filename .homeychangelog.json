@@ -6,10 +6,10 @@
     "en": "First version!"
   },
   "1.0.2": {
-    "en": "1.0.111 de set. de 2026"
+    "en": "Bug fixes and stability improvements."
   },
   "1.0.3": {
-    "en": " \"Improved: device availability detection is more reliable — fixed devices being wrongly marked offline, and a misleading 'available' trigger firing after an app restart. Rejected settings writes are now logged to help diagnose issues.\""
+    "en": "Improved: device availability detection is more reliable — fixed devices being wrongly marked offline, and a misleading 'available' trigger firing after an app restart. Rejected settings writes are now logged to help diagnose issues."
   },
   "1.0.4": {
     "en": "Bug Fix"
