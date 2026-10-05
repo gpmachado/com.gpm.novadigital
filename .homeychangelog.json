@@ -13,5 +13,8 @@
   },
   "1.0.4": {
     "en": "Bug Fix"
+  },
+  "1.0.5": {
+    "en": "Added: an availability on/off switch in the app settings page. Improved: availability detection is simpler and lighter - a device is marked unavailable after 25 minutes of silence or 5 failed commands in a row, and comes back as soon as it talks. Fewer Zigbee messages: on/off reporting every 30 minutes and spaced-out smart plug reporting. Traffic statistics are now kept in memory and start over when the app restarts. Removed: the 'Became available' and 'Became unavailable' flow cards."
   }
 }

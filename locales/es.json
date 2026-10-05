@@ -1,7 +1,7 @@
 {
   "settings": {
     "title": "Tráfico Zigbee",
-    "eyebrow": "HomeSuite · EP1 supervisado",
+    "eyebrow": "NovaDigital · EP1 supervisado",
     "intro": "Una fila por dispositivo físico. Los dispositivos multicanal se cuentan una vez mediante su dispositivo principal.",
     "refresh": "Actualizar ahora",
     "reset": "Restablecer estadísticas",
@@ -21,7 +21,7 @@
     "previous_hour": "Hora anterior",
     "last_message": "Último mensaje",
     "loading": "Cargando estadísticas…",
-    "footnote": "“Tramas” son mensajes Zigbee sin procesar. “Actividad” representa devoluciones de llamada explícitas de sensores inactivos. Los datos se guardan como máximo una vez cada cinco minutos.",
+    "footnote": "“Tramas” son mensajes Zigbee sin procesar. “Actividad” representa devoluciones de llamada explícitas de sensores inactivos. Los datos se mantienen en memoria y comienzan de nuevo cuando la app se reinicia.",
     "no_devices": "No hay dispositivos supervisados activos.",
     "frames": "tramas",
     "activity": "actividad",
@@ -43,6 +43,10 @@
     "total_rejoins": "Reconexiones totales",
     "devices_with_rejoins": "Dispositivos afectados",
     "last_rejoin": "Última reconexión",
-    "no_rejoins": "Aún no se registraron reconexiones."
+    "no_rejoins": "Aún no se registraron reconexiones.",
+    "availability_switch": "Seguimiento de disponibilidad",
+    "availability_switch_hint": "Si está desactivado, los dispositivos nunca se marcan como no disponibles por tiempo de espera: las estadísticas de Tráfico y Reincorporaciones se siguen registrando y los dispositivos actualmente no disponibles se restauran de inmediato.",
+    "availability_switch_failed": "Error al cambiar:",
+    "availability_switch_partial_restore": "Desactivado, pero {n} dispositivo(s) no se pudieron restaurar de inmediato: deberían recuperarse solos en breve."
   }
 }

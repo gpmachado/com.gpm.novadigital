@@ -64,7 +64,7 @@ class novadigital_switch_1gang extends TuyaZclBase {
     // -- Read extended onOff attrs ------------------------------------------
     await this._readExtendedOnOffAttrs(onOffCluster, 'power_on_behavior_global', 'power_on_current_global');
 
-    // -- Read tuyaPowerOnState (gang + switchMode) — first pairing only ------
+    // -- Read tuyaPowerOnState (gang + switchMode) - first pairing only ------
     // Device stores these in non-volatile memory; no need to re-read every boot.
     if (firstInit || !this.getSetting('power_on_behavior_gang1')) {
       await this._readGangPowerOnState(gangCluster, 1, 'power_on_behavior_gang1', 'power_on_current_gang1');
@@ -82,10 +82,12 @@ class novadigital_switch_1gang extends TuyaZclBase {
         .catch(readAttrCatch(this, '[EP1] readAttributes switchMode'));
     }
 
-    // -- First pairing: configure reporting ----------------------------------
+    // -- Reporting: configured at pairing, re-sent (spread out) at every other start ------
     if (firstInit) {
       this.log('First init -- configuring onOff reporting');
       await this._configureOnOffReporting(zclNode, [1]);
+    } else {
+      this._scheduleOnOffReporting(zclNode, [1]);
     }
   }
 
@@ -94,7 +96,7 @@ class novadigital_switch_1gang extends TuyaZclBase {
   // ---------------------------------------------------------------------------
 
   async onSettings({ oldSettings, newSettings, changedKeys }) {
-    // Inching: one write per save regardless of how many inching keys changed (ZBMINIR2 pattern).
+    // Inching: one write per save regardless of how many inching keys changed.
     if (changedKeys.some(k => k === 'inching_enabled' || k === 'inching_time')) {
       await this._applyInching({ enable: newSettings.inching_enabled, time: newSettings.inching_time });
     }
@@ -121,7 +123,6 @@ class novadigital_switch_1gang extends TuyaZclBase {
         case 'power_on_behavior_gang1':
           await this._writeGangPowerOnState(1, value, 'power_on_current_gang1');
           break;
-
 
         default:
           this.log(`Unknown setting key: ${key}`);

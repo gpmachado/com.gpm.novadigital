@@ -1,6 +1,6 @@
 {
   "id": "com.gpm.novadigital",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "compatibility": ">=12.4.0",
   "sdk": 3,
   "runtime": "nodejs",
@@ -40,6 +40,14 @@
     "resetRejoinStats": {
       "method": "POST",
       "path": "/rejoin-stats/reset"
+    },
+    "getAvailabilitySetting": {
+      "method": "GET",
+      "path": "/availability-setting"
+    },
+    "setAvailabilitySetting": {
+      "method": "POST",
+      "path": "/availability-setting"
     }
   }
 }

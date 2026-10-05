@@ -1,7 +1,7 @@
 {
   "settings": {
     "title": "Traffico Zigbee",
-    "eyebrow": "HomeSuite · EP1 monitorato",
+    "eyebrow": "NovaDigital · EP1 monitorato",
     "intro": "Una riga per dispositivo fisico. I dispositivi multicanale vengono conteggiati una sola volta tramite il dispositivo principale.",
     "refresh": "Aggiorna ora",
     "reset": "Azzera statistiche",
@@ -21,7 +21,7 @@
     "previous_hour": "Ora precedente",
     "last_message": "Ultimo messaggio",
     "loading": "Caricamento statistiche…",
-    "footnote": "I “frame” sono messaggi Zigbee grezzi. “Attività” rappresenta callback espliciti dai sensori in sospensione. I dati vengono salvati al massimo una volta ogni cinque minuti.",
+    "footnote": "I “frame” sono messaggi Zigbee grezzi. “Attività” rappresenta callback espliciti dai sensori in sospensione. I dati sono conservati in memoria e ripartono da zero quando l'app si riavvia.",
     "no_devices": "Nessun dispositivo monitorato è attivo.",
     "frames": "frame",
     "activity": "attività",
@@ -43,6 +43,10 @@
     "total_rejoins": "Riconnessioni totali",
     "devices_with_rejoins": "Dispositivi interessati",
     "last_rejoin": "Ultima riconnessione",
-    "no_rejoins": "Nessuna riconnessione registrata finora."
+    "no_rejoins": "Nessuna riconnessione registrata finora.",
+    "availability_switch": "Monitoraggio disponibilità",
+    "availability_switch_hint": "Se disattivato, i dispositivi non vengono mai contrassegnati come non disponibili per timeout: le statistiche di Traffico e Rientri continuano a essere registrate e i dispositivi attualmente non disponibili vengono ripristinati subito.",
+    "availability_switch_failed": "Modifica non riuscita:",
+    "availability_switch_partial_restore": "Disattivato, ma {n} dispositivo/i non è stato possibile ripristinarlo/i subito: dovrebbero riallinearsi da soli a breve."
   }
 }

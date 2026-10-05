@@ -56,7 +56,7 @@ class novadigital_switch_2gang extends TuyaZclBase {
       this._attachGangPowerOnListener(gangCluster, this._endpoint, 'power_on_behavior_gang2', 'power_on_current_gang2');
     }
 
-    // Read gang power-on state — first pairing only (stored in non-volatile memory).
+    // Read gang power-on state - first pairing only (stored in non-volatile memory).
     // On rejoin the device reports it via attr.powerOnStateGang listener automatically.
     const gangBehaviorKey = this._isMainDevice ? 'power_on_behavior_gang1' : 'power_on_behavior_gang2';
     const gangCurrentKey  = this._isMainDevice ? 'power_on_current_gang1'  : 'power_on_current_gang2';
@@ -99,7 +99,7 @@ class novadigital_switch_2gang extends TuyaZclBase {
       // -- Read extended onOff attrs ------------------------------------------
       await this._readExtendedOnOffAttrs(onOffCluster, 'power_on_behavior_global', 'power_on_current_global');
 
-      // -- Read switchMode + gang power-on — first pairing only --------------
+      // -- Read switchMode + gang power-on - first pairing only --------------
       // Device stores these in non-volatile memory; no need to re-read every boot.
       if (firstInit || !this.getSetting('switch_mode_global')) {
         await zclNode.endpoints[1].clusters.tuyaPowerOnState
@@ -123,10 +123,12 @@ class novadigital_switch_2gang extends TuyaZclBase {
         );
       }
 
-      // -- First pairing: configure reporting --------------------------------
+      // -- Reporting: configured at pairing, re-sent (spread out) at every other start ------
       if (firstInit) {
         this.log('First init -- configuring onOff reporting on all endpoints');
         await this._configureOnOffReporting(zclNode, [1, 2]);
+      } else {
+        this._scheduleOnOffReporting(zclNode, [1, 2]);
       }
     }
   }
@@ -136,7 +138,7 @@ class novadigital_switch_2gang extends TuyaZclBase {
   // ---------------------------------------------------------------------------
 
   async onSettings({ oldSettings, newSettings, changedKeys }) {
-    // Inching: one write per save regardless of how many inching keys changed (ZBMINIR2 pattern).
+    // Inching: one write per save regardless of how many inching keys changed.
     if (changedKeys.some(k => k === 'inching_enabled' || k === 'inching_time')) {
       await this._applyInching({ enable: newSettings.inching_enabled, time: newSettings.inching_time });
     }
@@ -187,7 +189,6 @@ class novadigital_switch_2gang extends TuyaZclBase {
         case 'power_on_behavior_gang2':
           await this._writeGangPowerOnState(2, value, 'power_on_current_gang2');
           break;
-
 
         default:
           this.log(`Unknown setting key: ${key}`);

@@ -4,21 +4,28 @@
  * Variant driver for TS011F / _TZ3000_cehuw1lw.
  *
  * Applies conservative reporting intervals to suppress the firmware's
- * three-frame bursts.
+ * three-frame bursts. The app also polls this plug (every 600 s or more, reading onOff and the
+ * electrical attributes), so the reports are kept sparse. This model sends almost no Basic
+ * heartbeat (~1.5 frames/h, against ~165 s on the switches), so frames come from the poll and
+ * from the onOff report below: keep that one at 600 s, which is what the 25 min availability
+ * timeout is sized for.
  */
 
 const { Cluster } = require('zigbee-clusters');
 const SmartPlugBase = require('../../lib/SmartPlugBase');
 
 const POLL_INTERVAL_SECONDS = 600;
+// Re-sent at every app start (_safeSetupAttributeReporting), so a change here reaches the plug on
+// the next start. Before 2026-10-05: activePower and rmsCurrent min 30 / max 600, rmsVoltage min 60
+// / max 900, energy min 60 / max 900.
 const REDUCED_REPORTING = {
-  onOff: { minInterval: 2, maxInterval: 600, minChange: 1 },
-  activePower: { minInterval: 30, maxInterval: 600, minChange: 5 },
-  rmsCurrent: { minInterval: 30, maxInterval: 600, minChange: 50 },
-  rmsVoltage: { minInterval: 60, maxInterval: 900, minChange: 2 },
+  onOff: { minInterval: 2, maxInterval: 600, minChange: 1 }, // button press + the heartbeat
+  activePower: { minInterval: 60, maxInterval: 1800, minChange: 5 },
+  rmsCurrent: { minInterval: 60, maxInterval: 1800, minChange: 50 },
+  rmsVoltage: { minInterval: 300, maxInterval: 3600, minChange: 2 },
   currentSummationDelivered: {
-    minInterval: 60,
-    maxInterval: 900,
+    minInterval: 300,
+    maxInterval: 3600,
     minChange: 1,
   },
 };
@@ -49,7 +56,7 @@ class SmartPlug3Device extends SmartPlugBase {
 
   /**
    * This firmware reports activePower correctly (13 W and 16 W observed with
-   * a small LED load), while rmsCurrent may remain zero. Using V × A would
+   * a small LED load), while rmsCurrent may remain zero. Using V x A would
    * therefore overwrite valid power reports with 0 W.
    */
   async _loadSettings() {

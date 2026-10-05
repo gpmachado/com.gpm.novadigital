@@ -13,10 +13,10 @@ const {
  * Driver for NovaDigital Switch 4 Gang (TS0004 / _TZ3000_lwthnp7j).
  *
  * Four sub-devices share a single Zigbee node:
- *   - Main device  → endpoint 1 (subDeviceId: undefined)
- *   - secondSwitch → endpoint 2
- *   - thirdSwitch  → endpoint 3
- *   - fourthSwitch → endpoint 4
+ *   - Main device  -> endpoint 1 (subDeviceId: undefined)
+ *   - secondSwitch -> endpoint 2
+ *   - thirdSwitch  -> endpoint 3
+ *   - fourthSwitch -> endpoint 4
  *
  * EP1 carries all extended clusters (tuyaPowerOnState 0xE001, onOff extended
  * attrs, basic, time). EPs 2-4 expose only onOff + tuyaPowerOnState bindings.
@@ -73,7 +73,7 @@ class novadigital_switch_4gang_zcl extends TuyaZclBase {
       gangCluster.on('attr.switchMode', this._onSwitchMode);
     }
 
-    // Read gang power-on state — first pairing only (stored in non-volatile memory).
+    // Read gang power-on state - first pairing only (stored in non-volatile memory).
     // On rejoin the device reports it via attr.powerOnStateGang listener automatically.
     if (firstInit || !this.getSetting(`power_on_gang${this._endpoint}`)) {
       this._readGangPowerOnState(
@@ -124,7 +124,7 @@ class novadigital_switch_4gang_zcl extends TuyaZclBase {
       // -- Read extended onOff attrs ------------------------------------------
       await this._readExtendedOnOffAttrs(onOffCluster, 'power_on_global', 'power_on_global_current');
 
-      // -- Read switchMode + EP2/EP3/EP4 gang power-on — first pairing only --
+      // -- Read switchMode + EP2/EP3/EP4 gang power-on - first pairing only --
       // Device stores these in non-volatile memory; no need to re-read every boot.
       // On rejoin the device will report these via attribute listeners automatically.
       if (firstInit || !this.getSetting('switch_mode')) {
@@ -150,10 +150,12 @@ class novadigital_switch_4gang_zcl extends TuyaZclBase {
         }
       }
 
-      // -- First pairing: configure reporting --------------------------------
+      // -- Reporting: configured at pairing, re-sent (spread out) at every other start ------
       if (firstInit) {
         this.log('First init -- configuring onOff reporting on all endpoints');
         await this._configureOnOffReporting(zclNode, [1, 2, 3, 4]);
+      } else {
+        this._scheduleOnOffReporting(zclNode, [1, 2, 3, 4]);
       }
     }
   }
@@ -206,7 +208,7 @@ class novadigital_switch_4gang_zcl extends TuyaZclBase {
         }
 
         case 'indicator_mode':
-          this.log(`[EP1] setIndicatorMode → ${value}`);
+          this.log(`[EP1] setIndicatorMode -> ${value}`);
           await this.zclNode.endpoints[1].clusters.onOff
             .setIndicatorMode(value)
             .then(() => this.log('[EP1] setIndicatorMode OK'))
