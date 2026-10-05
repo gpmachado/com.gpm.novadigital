@@ -3,4 +3,5 @@
 /.homeybuild/
 .DS_Store
 /analise/
+/logs/
 *.log
