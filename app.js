@@ -14,7 +14,7 @@ module.exports = class NovaDigitalApp extends Homey.App {
     // Flip ZCL_DEBUG in lib/constants.js for verbose ZCL frame logging.
     debug(ZCL_DEBUG);
 
-    // Must run before any ZigBeeDevice initialises — ExtendedOnOffCluster overrides
+    // Must run before any ZigBeeDevice initialises - ExtendedOnOffCluster overrides
     // the stock OnOff cluster (ID 6) so powerOnStateGlobal/indicatorMode/childLock
     // are recognised instead of throwing "not a valid attribute of onOff".
     Cluster.addCluster(ExtendedOnOffCluster);

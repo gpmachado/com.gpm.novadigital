@@ -42,7 +42,7 @@ class NovaDigitalSwitch4Gang extends NovaDigitalTuyaDpSwitchBase {
         power_on_behavior:         mode,
         power_on_behavior_current: POWER_ON_LABELS[mode],
       }).catch(err => this.error('setSettings powerOn:', err));
-      // DP.POWER_ON only arrives on power restore — reliable rejoin signal.
+      // DP.POWER_ON only arrives on power restore - reliable rejoin signal.
       this._notifyRejoin();
       return;
     }
@@ -60,7 +60,7 @@ class NovaDigitalSwitch4Gang extends NovaDigitalTuyaDpSwitchBase {
         await this.writeEnum(DP.POWER_ON, Number(enumValue))
           .catch(err => { this.error('Write powerOn:', err.message); throw err; });
       }
-      // power_on_behavior_current is read-only label — ignore
+      // power_on_behavior_current is read-only label - ignore
     }
   }
 
