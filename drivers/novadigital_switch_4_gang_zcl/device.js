@@ -108,7 +108,7 @@ class novadigital_switch_4gang_zcl extends TuyaZclBase {
       // Suppress Time + Basic cluster frame spam
       try {
         const ep1 = zclNode.endpoints[1];
-        ep1.bind('time',  new TimeServerBoundCluster());
+        ep1.bind('time',  new TimeServerBoundCluster({ getTimeZone: () => this.homey.clock.getTimezone() }));
         if (ep1.clusters.basic) ep1.bind('basic', new BasicSilentBoundCluster());
       } catch (err) {}
 
