@@ -486,6 +486,28 @@
         ]
       },
       {
+        "id": "novadigital_switch_3_gang_tuya_device_rejoined",
+        "title": {
+          "en": "Reconnected after power cut",
+          "de": "Nach Stromausfall wieder verbunden",
+          "es": "Reconectado tras un corte de energía",
+          "it": "Riconnesso dopo un'interruzione di corrente"
+        },
+        "hint": {
+          "en": "Fires when this device reconnects to the Zigbee network after a power cut.",
+          "de": "Wird ausgelöst, wenn sich dieses Gerät nach einem Stromausfall erneut mit dem Zigbee-Netzwerk verbindet.",
+          "es": "Se activa cuando este dispositivo se reconecta a la red Zigbee tras un corte de energía.",
+          "it": "Si attiva quando questo dispositivo si riconnette alla rete Zigbee dopo un'interruzione di corrente."
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=novadigital_switch_3_gang_tuya"
+          }
+        ]
+      },
+      {
         "id": "novadigital_switch_4_gang_device_rejoined",
         "title": {
           "en": "Reconnected after power cut",
@@ -2865,6 +2887,163 @@
                 }
               }
             ]
+          }
+        }
+      }
+    },
+    {
+      "platforms": [
+        "local"
+      ],
+      "connectivity": [
+        "zigbee"
+      ],
+      "images": {
+        "xlarge": "/drivers/novadigital_switch_3_gang_tuya/assets/images/xlarge.png",
+        "large": "/drivers/novadigital_switch_3_gang_tuya/assets/images/large.png",
+        "small": "/drivers/novadigital_switch_3_gang_tuya/assets/images/small.png"
+      },
+      "id": "novadigital_switch_3_gang_tuya",
+      "name": {
+        "en": "NovaDigital Switch 3 Gang Tuya",
+        "es": "Interruptor NovaDigital 3 canales Tuya",
+        "it": "Interruttore NovaDigital 3 canali Tuya",
+        "de": "NovaDigital Schalter 3-fach Tuya"
+      },
+      "class": "socket",
+      "capabilities": [
+        "onoff",
+        "is_availability"
+      ],
+      "energy": {
+        "approximation": {
+          "usageOn": 0,
+          "usageOff": 0
+        }
+      },
+      "settings": [
+        {
+          "id": "device_siblings_info",
+          "type": "label",
+          "label": {
+            "en": "Connected Switches",
+            "es": "Interruptores conectados",
+            "it": "Interruttori collegati",
+            "de": "Verbundene Schalter"
+          },
+          "hint": {
+            "en": "Other switches sharing this physical board",
+            "es": "Otros interruptores que comparten esta placa física",
+            "it": "Altri interruttori che condividono questa scheda fisica",
+            "de": "Andere Schalter, die diese physische Platine teilen"
+          },
+          "value": "-"
+        }
+      ],
+      "zigbee": {
+        "manufacturerName": [
+          "_TZE200_rd8cdssd"
+        ],
+        "productId": [
+          "TS0601"
+        ],
+        "endpoints": {
+          "1": {
+            "clusters": [
+              0,
+              4,
+              5,
+              10,
+              61184
+            ],
+            "bindings": [
+              61184
+            ]
+          }
+        },
+        "devices": {
+          "secondGang": {
+            "class": "socket",
+            "capabilities": [
+              "onoff"
+            ],
+            "name": {
+              "en": "NovaDigital 3 Gang Tuya - Switch 2",
+              "es": "NovaDigital 3 canales Tuya - Interruptor 2",
+              "it": "NovaDigital 3 canali Tuya - Interruttore 2",
+              "de": "NovaDigital 3-fach Tuya - Schalter 2"
+            },
+            "energy": {
+              "approximation": {
+                "usageOn": 0,
+                "usageOff": 0
+              }
+            },
+            "settings": [
+              {
+                "id": "device_siblings_info",
+                "type": "label",
+                "label": {
+                  "en": "Connected Switches",
+                  "es": "Interruptores conectados",
+                  "it": "Interruttori collegati",
+                  "de": "Verbundene Schalter"
+                },
+                "hint": {
+                  "en": "Other switches sharing this physical board",
+                  "es": "Otros interruptores que comparten esta placa física",
+                  "it": "Altri interruttori che condividono questa scheda fisica",
+                  "de": "Andere Schalter, die diese physische Platine teilen"
+                },
+                "value": "-"
+              }
+            ]
+          },
+          "thirdGang": {
+            "class": "socket",
+            "capabilities": [
+              "onoff"
+            ],
+            "name": {
+              "en": "NovaDigital 3 Gang Tuya - Switch 3",
+              "es": "NovaDigital 3 canales Tuya - Interruptor 3",
+              "it": "NovaDigital 3 canali Tuya - Interruttore 3",
+              "de": "NovaDigital 3-fach Tuya - Schalter 3"
+            },
+            "energy": {
+              "approximation": {
+                "usageOn": 0,
+                "usageOff": 0
+              }
+            },
+            "settings": [
+              {
+                "id": "device_siblings_info",
+                "type": "label",
+                "label": {
+                  "en": "Connected Switches",
+                  "es": "Interruptores conectados",
+                  "it": "Interruttori collegati",
+                  "de": "Verbundene Schalter"
+                },
+                "hint": {
+                  "en": "Other switches sharing this physical board",
+                  "es": "Otros interruptores que comparten esta placa física",
+                  "it": "Altri interruttori che condividono questa scheda fisica",
+                  "de": "Andere Schalter, die diese physische Platine teilen"
+                },
+                "value": "-"
+              }
+            ]
+          }
+        },
+        "learnmode": {
+          "image": "/drivers/novadigital_switch_3_gang_tuya/assets/icon.svg",
+          "instruction": {
+            "en": "Press and hold the setup button for 5 seconds until the LED starts blinking. Three device tiles will be created, one for each gang.",
+            "es": "Mantén pulsado el botón de configuración durante 5 segundos hasta que el LED parpadee. Se crearán tres mosaicos, uno por grupo.",
+            "it": "Tieni premuto il pulsante di configurazione per 5 secondi fino a quando il LED inizia a lampeggiare. Verranno creati tre riquadri, uno per ogni gruppo.",
+            "de": "Halte die Setup-Taste 5 Sekunden gedrückt, bis die LED blinkt. Es werden drei Kacheln erstellt, eine pro Gruppe."
           }
         }
       }

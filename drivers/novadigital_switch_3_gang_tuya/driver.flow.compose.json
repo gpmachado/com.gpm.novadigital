@@ -1,0 +1,8 @@
+{
+  "triggers": [
+    {
+      "$extends": "device_rejoined",
+      "$id": "novadigital_switch_3_gang_tuya_device_rejoined"
+    }
+  ]
+}

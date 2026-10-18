@@ -9,5 +9,5 @@ All mains-powered devices (switches, plugs) fire a "Reconnected after power cut"
 A Settings page (App → Settings) shows live Zigbee traffic and rejoin statistics for every paired device, useful for spotting flaky mesh coverage or a plug that keeps power-cycling.
 
 Supported devices:
-- NovaDigital wall switches — 1, 2, 2 Touch, 3, 4, 4 ZCL and 6 gang
+- NovaDigital wall switches — 1, 2, 2 Touch, 3, 3 Tuya, 4, 4 ZCL and 6 gang
 - NovaDigital smart plugs (with power/energy metering)
