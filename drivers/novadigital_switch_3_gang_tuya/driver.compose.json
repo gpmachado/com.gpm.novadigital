@@ -34,6 +34,138 @@
         "de": "Andere Schalter, die diese physische Platine teilen"
       },
       "value": "-"
+    },
+    {
+      "id": "backlight_enabled",
+      "type": "checkbox",
+      "value": true,
+      "label": {
+        "en": "Backlight",
+        "es": "Retroiluminación",
+        "it": "Retroilluminazione",
+        "de": "Hintergrundbeleuchtung"
+      },
+      "hint": {
+        "en": "Turns the backlight of the switch keys on or off.",
+        "es": "Enciende o apaga la retroiluminación de las teclas del interruptor.",
+        "it": "Accende o spegne la retroilluminazione dei tasti dell'interruttore.",
+        "de": "Schaltet die Hintergrundbeleuchtung der Schaltertasten ein oder aus."
+      }
+    },
+    {
+      "id": "vibration_gear",
+      "type": "dropdown",
+      "value": "1",
+      "label": {
+        "en": "Key vibration",
+        "es": "Vibración de la tecla",
+        "it": "Vibrazione del tasto",
+        "de": "Tastenvibration"
+      },
+      "hint": {
+        "en": "Strength of the vibration when a key is pressed. Level 0 is the lowest setting of the device.",
+        "es": "Intensidad de la vibración al pulsar una tecla. El nivel 0 es el ajuste más bajo del dispositivo.",
+        "it": "Intensità della vibrazione quando si preme un tasto. Il livello 0 è l'impostazione più bassa del dispositivo.",
+        "de": "Stärke der Vibration beim Drücken einer Taste. Stufe 0 ist die niedrigste Einstellung des Geräts."
+      },
+      "values": [
+        {
+          "id": "0",
+          "label": {
+            "en": "Level 0",
+            "es": "Nivel 0",
+            "it": "Livello 0",
+            "de": "Stufe 0"
+          }
+        },
+        {
+          "id": "1",
+          "label": {
+            "en": "Level 1",
+            "es": "Nivel 1",
+            "it": "Livello 1",
+            "de": "Stufe 1"
+          }
+        },
+        {
+          "id": "2",
+          "label": {
+            "en": "Level 2",
+            "es": "Nivel 2",
+            "it": "Livello 2",
+            "de": "Stufe 2"
+          }
+        },
+        {
+          "id": "3",
+          "label": {
+            "en": "Level 3",
+            "es": "Nivel 3",
+            "it": "Livello 3",
+            "de": "Stufe 3"
+          }
+        }
+      ]
+    },
+    {
+      "id": "momentary_1",
+      "type": "number",
+      "value": 0,
+      "min": 0,
+      "max": 3600,
+      "units": "s",
+      "label": {
+        "en": "Inching Switch 1",
+        "es": "Pulso Interruptor 1",
+        "it": "Impulso Interruttore 1",
+        "de": "Impuls Schalter 1"
+      },
+      "hint": {
+        "en": "Seconds the switch stays on after it is turned on, then it turns off by itself. 0 = off.",
+        "es": "Segundos que el interruptor permanece encendido y luego se apaga solo. 0 = desactivado.",
+        "it": "Secondi in cui l'interruttore resta acceso, poi si spegne da solo. 0 = disattivato.",
+        "de": "Sekunden, die der Schalter eingeschaltet bleibt, danach schaltet er sich selbst aus. 0 = aus."
+      }
+    },
+    {
+      "id": "momentary_2",
+      "type": "number",
+      "value": 0,
+      "min": 0,
+      "max": 3600,
+      "units": "s",
+      "label": {
+        "en": "Inching Switch 2",
+        "es": "Pulso Interruptor 2",
+        "it": "Impulso Interruttore 2",
+        "de": "Impuls Schalter 2"
+      },
+      "hint": {
+        "en": "Seconds the switch stays on after it is turned on, then it turns off by itself. 0 = off.",
+        "es": "Segundos que el interruptor permanece encendido y luego se apaga solo. 0 = desactivado.",
+        "it": "Secondi in cui l'interruttore resta acceso, poi si spegne da solo. 0 = disattivato.",
+        "de": "Sekunden, die der Schalter eingeschaltet bleibt, danach schaltet er sich selbst aus. 0 = aus."
+      }
+    },
+    {
+      "id": "momentary_3",
+      "type": "number",
+      "value": 0,
+      "min": 0,
+      "max": 3600,
+      "units": "s",
+      "label": {
+        "en": "Inching Switch 3",
+        "es": "Pulso Interruptor 3",
+        "it": "Impulso Interruttore 3",
+        "de": "Impuls Schalter 3"
+      },
+      "hint": {
+        "en": "Seconds the switch stays on after it is turned on, then it turns off by itself. 0 = off.",
+        "es": "Segundos que el interruptor permanece encendido y luego se apaga solo. 0 = desactivado.",
+        "it": "Secondi in cui l'interruttore resta acceso, poi si spegne da solo. 0 = disattivato.",
+        "de": "Sekunden, die der Schalter eingeschaltet bleibt, danach schaltet er sich selbst aus. 0 = aus."
+      }
     }
   ],
   "zigbee": {
